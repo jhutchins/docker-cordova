@@ -14,7 +14,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
-RUN dpkg --add-architecture i386 && \
+RUN buildDeps='software-properties-common python-software-properties' && \
+    dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         software-properties-common \
@@ -53,7 +54,7 @@ RUN dpkg --add-architecture i386 && \
     
     # clean up
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    apt-get purge -y --auto-remove software-properties-common && \
+    apt-get purge -y --auto-remove $buildDeps && \
     apt-get autoremove -y && apt-get clean
 
 
