@@ -1,4 +1,4 @@
-FROM node:6-wheezy
+FROM node:6
 
 MAINTAINER Jeff Hutchins <jeff@nti.io>
 ENV DEBIAN_FRONTEND=noninteractive \
