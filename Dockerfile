@@ -20,7 +20,7 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     apt-get install -y --no-install-recommends $buildDeps && \
 
     # use WebUpd8 PPA
-    add-apt-repository ppa:webupd8team/java -y && \
+    add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" -y && \
     apt-get update -y && \
 
     # automatically accept the Oracle license
