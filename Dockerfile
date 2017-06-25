@@ -17,9 +17,7 @@ ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/bu
 RUN buildDeps='software-properties-common python-software-properties' && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y --no-install-recommends \
-        software-properties-common \
-    && \
+    apt-get install -y --no-install-recommends $buildDeps && \
 
     # use WebUpd8 PPA
     add-apt-repository ppa:webupd8team/java -y && \
