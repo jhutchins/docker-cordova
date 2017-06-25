@@ -17,15 +17,7 @@ ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/bu
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-        ant \
-        curl \
-        gradle \
-        libncurses5:i386 \
-        libstdc++6:i386 \
-        maven \
         software-properties-common \
-        wget \
-        zlib1g:i386 \
     && \
 
     # use WebUpd8 PPA
@@ -38,6 +30,16 @@ RUN dpkg --add-architecture i386 && \
     apt-get install -y oracle-java8-set-default && \
 
     # install android sdk
+    apt-get install -y --no-install-recommends \
+        ant \
+        curl \
+        gradle \
+        libncurses5:i386 \
+        libstdc++6:i386 \
+        maven \
+        wget \
+        zlib1g:i386 \
+    && \
     cd /opt && \
     mkdir android && cd android && \
     wget -O tools.zip ${ANDROID_SDK_URL} && \
