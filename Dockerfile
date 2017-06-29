@@ -32,9 +32,12 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     && \
 
     # install gradle
-    wget -O gradle.zip ${ANDROID_SDK_URL} && \
+    cd /opt && \
+    mkdir -p gradle && cd gradle && \
+    wget -O gradle.zip ${GRADLE_URL} && \
     unzip gradle.zip && rm gradle.zip && \
     ls -R && \
+    asdfjlk
 
     # use WebUpd8 PPA
     add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" -y && \
