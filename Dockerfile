@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     ANT_HOME="/usr/share/ant" \
     MAVEN_HOME="/usr/share/maven" \
     GRADLE_HOME="/usr/share/gradle" \
+    GRADLE_URL="https://services.gradle.org/distributions/gradle-3.5-bin.zip" \
     ANDROID_HOME="/opt/android" \
     CORDOVA_VERSION=7.0.1
 
@@ -18,6 +19,22 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends $buildDeps && \
+
+    # install install dependancies
+    apt-get install -y --no-install-recommends \
+        ant \
+        curl \
+        libncurses5:i386 \
+        libstdc++6:i386 \
+        maven \
+        wget \
+        zlib1g:i386 \
+    && \
+
+    # install gradle
+    wget -O gradle.zip ${ANDROID_SDK_URL} && \
+    unzip gradle.zip && rm gradle.zip && \
+    ls -R && \
 
     # use WebUpd8 PPA
     add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" -y && \
@@ -29,16 +46,6 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     apt-get install -y oracle-java8-set-default && \
 
     # install android sdk
-    apt-get install -y --no-install-recommends \
-        ant \
-        curl \
-        gradle \
-        libncurses5:i386 \
-        libstdc++6:i386 \
-        maven \
-        wget \
-        zlib1g:i386 \
-    && \
     cd /opt && \
     mkdir android && cd android && \
     wget -O tools.zip ${ANDROID_SDK_URL} && \
