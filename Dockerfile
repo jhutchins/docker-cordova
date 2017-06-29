@@ -33,10 +33,9 @@ RUN buildDeps='software-properties-common python-software-properties' && \
 
     # install gradle
     cd /opt && \
-    mkdir -p gradle && cd gradle && \
     wget -O gradle.zip ${GRADLE_URL} && \
     unzip gradle.zip && rm gradle.zip && \
-    ls -R && asdf && \
+    ln -sf /opt/gradle-3.5/bin/ /usr/bin/gradle && \
 
     # use WebUpd8 PPA
     add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" -y && \
