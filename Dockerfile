@@ -57,6 +57,7 @@ RUN buildDeps='software-properties-common python-software-properties' && \
 
     # add cordova
     yarn global add cordova@${CORDOVA_VERSION} && \
+    yes | cordova --help && \
     
     # clean up
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
