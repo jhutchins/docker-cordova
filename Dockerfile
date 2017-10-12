@@ -3,13 +3,13 @@ FROM node:6
 MAINTAINER Jeff Hutchins <jeff@nti.io>
 ENV DEBIAN_FRONTEND=noninteractive \
     JAVA_HOME=/usr/lib/jvm/java-8-oracle \
-    ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linux.zip" \
-    ANDROID_BUILD_TOOLS_VERSION=25.0.3 \
-    ANDROID_APIS="android-25" \
+    ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" \
+    ANDROID_BUILD_TOOLS_VERSION=26.0.1 \
+    ANDROID_APIS="android-26" \
     ANT_HOME="/usr/share/ant" \
     MAVEN_HOME="/usr/share/maven" \
     GRADLE_HOME="/usr/share/gradle" \
-    GRADLE_URL="https://services.gradle.org/distributions/gradle-3.5-bin.zip" \
+    GRADLE_URL="https://downloads.gradle.org/distributions/gradle-4.2-bin.zip" \
     ANDROID_HOME="/opt/android" \
     CORDOVA_VERSION=7.0.1
 
