@@ -54,6 +54,9 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION} && \
     chmod a+x -R $ANDROID_HOME && \
     chown -R root:root $ANDROID_HOME && \
+    mkdir -p "$ANDROID_HOME/licenses" && \
+    echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license" && \
+    echo -e "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "$ANDROID_HOME/licenses/intel-android-extra-license" && \
 
     # add cordova
     yarn global add cordova@${CORDOVA_VERSION} && \
