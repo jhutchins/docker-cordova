@@ -21,6 +21,7 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     apt-get install -y --no-install-recommends $buildDeps && \
 
     # install install dependancies
+    yarn global upgrade yarn && \
     apt-get install -y --no-install-recommends \
         ant \
         curl \
@@ -51,7 +52,7 @@ RUN buildDeps='software-properties-common python-software-properties' && \
     mkdir android && cd android && \
     wget -O tools.zip ${ANDROID_SDK_URL} && \
     unzip tools.zip && rm tools.zip && \
-    echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION} && \
+    yes | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION} && \
     chmod a+x -R $ANDROID_HOME && \
     chown -R root:root $ANDROID_HOME && \
     mkdir -p "$ANDROID_HOME/licenses" && \
